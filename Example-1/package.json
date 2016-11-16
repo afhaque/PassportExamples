@@ -5,8 +5,13 @@
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.15.0",
+    "connect-ensure-login": "^0.1.1",
+    "cookie-parser": "^1.4.3",
     "express": "^4.13.4",
-    "passport": "^0.3.2"
+    "express-session": "^1.14.2",
+    "mysql": "^2.12.0",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1"
   },
   "devDependencies": {},
   "scripts": {

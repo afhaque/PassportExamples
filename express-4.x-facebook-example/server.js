@@ -11,8 +11,8 @@ var Strategy = require('passport-facebook').Strategy;
 // with a user object, which will be set at `req.user` in route handlers after
 // authentication.
 passport.use(new Strategy({
-    clientID: process.env.CLIENT_ID || "124194354729606",
-    clientSecret: process.env.CLIENT_SECRET || "bd77862f9f67fc72ee8208c0fd17d3b9",
+    clientID: process.env.CLIENT_ID || "1826103597601691",
+    clientSecret: process.env.CLIENT_SECRET || "1c5d8736244d4ecadc89fe7c0384eff0",
     callbackURL: 'http://localhost:3000/login/facebook/return'
   },
   function(accessToken, refreshToken, profile, cb) {
@@ -32,7 +32,7 @@ passport.use(new Strategy({
 // production-quality application, this would typically be as simple as
 // supplying the user ID when serializing, and querying the user record by ID
 // from the database when deserializing.  However, due to the fact that this
-// example does not have a database, the complete Twitter profile is serialized
+// example does not have a database, the complete Facebook profile is serialized
 // and deserialized.
 passport.serializeUser(function(user, cb) {
   cb(null, user);
@@ -72,8 +72,8 @@ app.get('/',
 app.get('/login',
   function(req, res){
     res.render('login');
-  });
-
+  })
+;
 app.get('/login/facebook',
   passport.authenticate('facebook'));
 
