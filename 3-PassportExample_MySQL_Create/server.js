@@ -4,6 +4,27 @@ var passport = require("passport");
 var Strategy = require("passport-facebook").Strategy;
 var path = require("path");
 
+// Incorporate MySQL
+var mysql = require("mysql");
+
+// Connection Info for MySQL DB
+var connection = mysql.createConnection({
+  port: 3306,
+  host: "localhost",
+  user: "root",
+  password: "CodingRocks!",
+  database: "ahmedsdb"
+});
+
+// Connect to MySQL DB
+connection.connect(function(err) {
+  if (err) {
+    console.error("error connecting: " + err.stack);
+    return;
+  }
+  console.log("connected as id " + connection.threadId);
+});
+
 // Passport / Facebook Authentication Information
 passport.use(new Strategy({
   clientID: process.env.CLIENT_ID || "1826103597601691",
@@ -92,7 +113,29 @@ app.get("/api/inbox",
   require("connect-ensure-login").ensureLoggedIn(),
   function(req, res) {
 
-    res.json(req.user);
+    var queryString = "SELECT * FROM table_of_users WHERE user_id=" + req.user.id;
+    connection.query(queryString, function(err, data) {
+
+      if(err) throw err
+
+      if (data.length == 0) { 
+
+        console.log("HEY");
+        // INSERT INTO actors (name, coolness_points, attitude) VALUES ("Jerry", 90, "relaxed")
+        var paramsToInsert = "'" + req.user.id + "'" + "," + "'" + req.user.displayName + "'" + "," + "'" + "You have no mail. You may want to make some friends." + "'"
+        var insertString = "INSERT INTO table_of_users(user_id, name, mail) VALUES (" + paramsToInsert + ")";
+
+        console.log(insertString);
+        connection.query(insertString, function(err, data){
+
+            if(err) throw err
+        })
+
+      }
+
+      res.json(data);
+
+    });
 
   });
 

@@ -1,0 +1,55 @@
+{
+    "extends": "airbnb",
+    "plugins": [
+        "import"
+    ],
+
+    "env": {
+      "browser": true,
+      "node": true,
+      "jasmine": true,
+      "jquery": true,
+      "commonjs": true,
+      "amd": true
+    },
+
+    "rules": {
+      "quotes": ["error", "double"],
+      "console": 0,
+      "no-console": 0,
+      "no-var": 0,
+      "radix": 0,
+      "vars-on-top": 0,
+      "padded-blocks": 0,
+      "max-len": ["warn", 120],
+      "no-inline-comments": "error",
+      "brace-style": ["error", "stroustrup"],
+      "no-debugger": 0,
+      "no-trailing-spaces": ["warn"],
+      "eol-last": ["warn"],
+      "comma-dangle": ["error", "never"],
+      "no-plusplus": 0,
+      "no-multiple-empty-lines": ["warn", {"max": 2}],
+      "no-unused-vars": ["warn"],
+      "prefer-arrow-callback": 0,
+      "func-names": 0,
+      "space-before-function-paren": ["error", { "anonymous": "never", "named": "never" }],
+      "no-alert": 0,
+      "prefer-template": 0,
+      "default-case": 0,
+      "object-shorthand": 0,
+      "no-shadow": ["warn"],
+      "block-scoped-var": 0,
+      "no-redeclare": ["warn"],
+      "no-use-before-define": ["warn"],
+      "guard-for-in": ["warn"],
+      "no-restricted-syntax": ["warn"],
+      "consistent-return": ["warn"],
+      "no-use-before-define": ["warn", { "functions": false}],
+      "no-param-reassign": 0,
+      "import/no-unresolved": 0,
+      "import/no-extraneous-dependencies": 0,
+      "no-mixed-operators": 0,
+      "no-path-concat": 0
+    }
+}
